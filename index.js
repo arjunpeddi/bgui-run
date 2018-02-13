@@ -30,7 +30,16 @@ http.createServer(function (req, res) {
     
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end('Hello, world!');
-    
+
+    (async() => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto('http://example.com');
+    await page.screenshot({path: 'example.png'});    
+    await browser.close();
+    res.end('screenshot created!');
+    })(); 
+
 }).listen(process.env.PORT || 8080);
 
 
