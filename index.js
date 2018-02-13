@@ -1,4 +1,5 @@
-// var http = require('http');
+
+var http = require('http');
 var puppeteer = require('puppeteer');
 
 // var server = http.createServer(function(request, response) {
@@ -15,16 +16,15 @@ var puppeteer = require('puppeteer');
 
 // console.log('running');
 
-// (async() => {
-//     const browser = await puppeteer.launch();
-//     const page = await browser.newPage();
-//     await page.goto('http://example.com');
-//     // await page.screenshot({path: 'example.png'});    
-//     await browser.close();
-//     console.log('screenshot taken successfully..');
-//   })();
+(async() => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto('http://example.com');
+    // await page.screenshot({path: 'example.png'});    
+    await browser.close();
+    console.log('screenshot taken successfully..');
+  })();
 
-var http = require('http');
 
 http.createServer(function (req, res) {
     
