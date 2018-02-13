@@ -13,7 +13,7 @@
 
 // console.log("Server running at http://localhost:%d", port);
 
-console.log('running');
+// console.log('running');
 
 // (async() => {
 //     const browser = await puppeteer.launch();
@@ -23,5 +23,14 @@ console.log('running');
 //     await browser.close();
 //     console.log('screenshot taken successfully..');
 //   })();
+
+var http = require('http');
+
+http.createServer(function (req, res) {
+    
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end('Hello, world!');
+    
+}).listen(process.env.PORT || 8080);
 
 
