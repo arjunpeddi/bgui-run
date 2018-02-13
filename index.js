@@ -1,5 +1,5 @@
 // var http = require('http');
-// var puppeteer = require('puppeteer');
+var puppeteer = require('puppeteer');
 
 // var server = http.createServer(function(request, response) {
 
