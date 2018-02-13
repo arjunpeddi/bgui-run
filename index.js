@@ -1,6 +1,6 @@
 
 var http = require('http');
-var puppeteer = require('puppeteer');
+// var puppeteer = require('puppeteer');
 
 // var server = http.createServer(function(request, response) {
 
@@ -16,31 +16,23 @@ var puppeteer = require('puppeteer');
 
 // console.log('running');
 
-(async() => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.goto('http://example.com');
-    // await page.screenshot({path: 'example.png'});    
-    await browser.close();
-    console.log('screenshot taken successfully..');
-  })();
-
-
-// http.createServer(function (req, res) {
-    
-    
-//     // res.end('Hello, world!');
-
-//     (async() => {
+// (async() => {
 //     const browser = await puppeteer.launch();
 //     const page = await browser.newPage();
 //     await page.goto('http://example.com');
 //     // await page.screenshot({path: 'example.png'});    
 //     await browser.close();
-//     res.writeHead(200, { 'Content-Type': 'text/html' });
-//     res.end('screenshot created!');
-//     })(); 
+//     console.log('screenshot taken successfully..');
+//   })();
 
-// }).listen(process.env.PORT || 8080);
+
+http.createServer(function (req, res) {
+    
+
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end('screenshot created!');
+    
+
+}).listen(process.env.PORT || 8080);
 
 
