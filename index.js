@@ -2,19 +2,25 @@
 var http = require('http');
 var puppeteer = require('./node_modules/puppeteer/lib/Puppeteer');
 
-http.createServer(async function (req, res) {
-    
-    const browser = await puppeteer.launch();
+// run();
 
-    res.writeHead(200, { 'Content-Type': 'text/html' });
+http.createServer(function (req, res) {
     
-    res.end('server running!');
+    (async() => {
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        await page.goto('http://example.com');
+        await page.screenshot({path: 'example.png'});
+        await browser.close();
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end('server running!');
+      })();
 
 }).listen(process.env.PORT || 8080);
 
 async function run() {
     try {
-        const browser = await puppeteer.launch({headless: false});
+        const browser = await puppeteer.launch();
         // const page = await browser.newPage();
         
         // await page.goto('https://github.com');
