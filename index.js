@@ -2,31 +2,30 @@
 var http = require('http');
 var puppeteer = require('puppeteer');
 
-http.createServer(async function (req, res) {
+http.createServer(function (req, res) {
     
-    const browser = await puppeteer.launch({headless: false});
-    const page = await browser.newPage();
-    
-    await page.goto('https://github.com');
-    await page.screenshot({ path: 'github.png' });
-    
-    browser.close();
-    
+    run();
+
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end('server running!');
 
 }).listen(process.env.PORT || 8080);
 
 async function run() {
-    const browser = await puppeteer.launch({headless: false});
-    const page = await browser.newPage();
+    try {
+        const browser = await puppeteer.launch({headless: false});
+        const page = await browser.newPage();
+        
+        await page.goto('https://github.com');
+        await page.screenshot({ path: 'github.png' });
+        
+        browser.close();
     
-    await page.goto('https://github.com');
-    await page.screenshot({ path: 'github.png' });
-    
-    browser.close();
+        console.log('screenshot..');
+    } catch (error){
 
-    console.log('screenshot..');
+    }
+    
   }
   
 // run();
