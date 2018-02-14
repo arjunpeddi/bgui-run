@@ -2,18 +2,20 @@
 var http = require('http');
 var puppeteer = require('puppeteer');
 
-http.createServer(function (req, res) {
+http.createServer(async function (req, res) {
     
-    run(res);
+    const browser = await puppeteer.launch();
+    browser.close();
 
     res.writeHead(200, { 'Content-Type': 'text/html' });
-    // res.end('server running!');
+    
+    res.end('server running!');
 
 }).listen(process.env.PORT || 8080);
 
-async function run(res) {
+async function run() {
     try {
-        const browser = await puppeteer.launch({headless: false});
+        const browser = await puppeteer.launch();
         // const page = await browser.newPage();
         
         // await page.goto('https://github.com');
@@ -21,7 +23,6 @@ async function run(res) {
         
         browser.close();
     
-        res.end('Hello..');
     } catch (error){
 
     }
