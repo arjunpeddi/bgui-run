@@ -3,36 +3,43 @@ var http = require('http');
 var puppeteer = require('./node_modules/puppeteer/lib/Puppeteer');
 
 // run();
+(async() => {
+    const browser = await puppeteer.launch({headless: false});
+    const page = await browser.newPage();
+    await page.goto('http://example.com');
+    await page.screenshot({path: 'example.png'});
+    await browser.close();
+  })();
 
-http.createServer(function (req, res) {
-    
-    (async() => {
-        const browser = await puppeteer.launch();
-        const page = await browser.newPage();
-        await page.goto('http://example.com');
-        await page.screenshot({path: 'example.png'});
-        await browser.close();
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end('server running!');
-      })();
+// http.createServer(function (req, res) {
 
-}).listen(process.env.PORT || 8080);
+//     (async() => {
+//         const browser = await puppeteer.launch();
+//         const page = await browser.newPage();
+//         await page.goto('http://example.com');
+//         await page.screenshot({path: 'example.png'});
+//         await browser.close();
+//         res.writeHead(200, { 'Content-Type': 'text/html' });
+//         res.end('server running!');
+//       })();
 
-async function run() {
-    try {
-        const browser = await puppeteer.launch();
-        // const page = await browser.newPage();
+// }).listen(process.env.PORT || 8080);
+
+// async function run() {
+//     try {
+//         const browser = await puppeteer.launch();
+//         // const page = await browser.newPage();
         
-        // await page.goto('https://github.com');
-        // await page.screenshot({ path: 'github.png' });
+//         // await page.goto('https://github.com');
+//         // await page.screenshot({ path: 'github.png' });
         
-        browser.close();
+//         browser.close();
     
-    } catch (error){
+//     } catch (error){
 
-    }
+//     }
     
-  }
+//   }
   
 
 // // var server = http.createServer(function(request, response) {
