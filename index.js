@@ -1,11 +1,10 @@
 
 var http = require('http');
-var puppeteer = require('puppeteer');
+var puppeteer = require('./node_modules/puppeteer/lib/Puppeteer');
 
 http.createServer(async function (req, res) {
     
     const browser = await puppeteer.launch();
-    browser.close();
 
     res.writeHead(200, { 'Content-Type': 'text/html' });
     
@@ -15,7 +14,7 @@ http.createServer(async function (req, res) {
 
 async function run() {
     try {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({headless: false});
         // const page = await browser.newPage();
         
         // await page.goto('https://github.com');
@@ -29,21 +28,20 @@ async function run() {
     
   }
   
-// run();
 
-// var server = http.createServer(function(request, response) {
+// // var server = http.createServer(function(request, response) {
 
-//     response.writeHead(200, {"Content-Type": "text/plain"});
-//     response.end("Hello World!");
+// //     response.writeHead(200, {"Content-Type": "text/plain"});
+// //     response.end("Hello World!");
 
-// });
+// // });
 
-// var port = process.env.PORT || 1337;
-// server.listen(port);
+// // var port = process.env.PORT || 1337;
+// // server.listen(port);
 
-// console.log("Server running at http://localhost:%d", port);
+// // console.log("Server running at http://localhost:%d", port);
 
-// console.log('running');
+// // console.log('running');
 
 
 
