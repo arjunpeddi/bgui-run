@@ -14,10 +14,10 @@ http.createServer(function (req, res) {
 async function run(res) {
     try {
         const browser = await puppeteer.launch({headless: false});
-        const page = await browser.newPage();
+        // const page = await browser.newPage();
         
-        await page.goto('https://github.com');
-        await page.screenshot({ path: 'github.png' });
+        // await page.goto('https://github.com');
+        // await page.screenshot({ path: 'github.png' });
         
         browser.close();
     
