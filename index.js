@@ -5,7 +5,7 @@ var puppeteer = require('puppeteer');
 http.createServer(function (req, res) {
     
     res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end('screenshot created!');
+    res.end('server running!');
 
 }).listen(process.env.PORT || 8080);
 
@@ -15,6 +15,8 @@ http.createServer(function (req, res) {
     await page.goto('http://example.com');
     await page.screenshot({path: 'example.png'});    
     await browser.close();
+
+    console.log('screenshot is ready..');
 })();
 
 // var server = http.createServer(function(request, response) {
