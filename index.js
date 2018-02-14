@@ -4,12 +4,18 @@ var puppeteer = require('puppeteer');
 
 http.createServer(function (req, res) {
     
-
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end('screenshot created!');
-    
 
 }).listen(process.env.PORT || 8080);
+
+(async() => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto('http://example.com');
+    await page.screenshot({path: 'example.png'});    
+    await browser.close();
+})();
 
 // var server = http.createServer(function(request, response) {
 
@@ -25,14 +31,7 @@ http.createServer(function (req, res) {
 
 // console.log('running');
 
-// (async() => {
-//     const browser = await puppeteer.launch();
-//     const page = await browser.newPage();
-//     await page.goto('http://example.com');
-//     // await page.screenshot({path: 'example.png'});    
-//     await browser.close();
-//     console.log('screenshot taken successfully..');
-//   })();
+
 
 
 
