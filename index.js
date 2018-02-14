@@ -9,15 +9,17 @@ http.createServer(function (req, res) {
 
 }).listen(process.env.PORT || 8080);
 
-(async() => {
-    const browser = await puppeteer.launch();
+async function run() {
+    const browser = await puppeteer.launch({headless: false});
     const page = await browser.newPage();
-    await page.goto('http://example.com');
-    await page.screenshot({path: 'example.png'});    
-    await browser.close();
-
-    console.log('screenshot is ready..');
-})();
+    
+    await page.goto('https://github.com');
+    await page.screenshot({ path: 'github.png' });
+    
+    browser.close();
+  }
+  
+run();
 
 // var server = http.createServer(function(request, response) {
 
