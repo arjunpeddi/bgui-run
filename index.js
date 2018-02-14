@@ -4,14 +4,14 @@ var puppeteer = require('puppeteer');
 
 http.createServer(function (req, res) {
     
-    run();
+    run(res);
 
     res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end('server running!');
+    // res.end('server running!');
 
 }).listen(process.env.PORT || 8080);
 
-async function run() {
+async function run(res) {
     try {
         const browser = await puppeteer.launch({headless: false});
         const page = await browser.newPage();
@@ -21,7 +21,7 @@ async function run() {
         
         browser.close();
     
-        console.log('screenshot..');
+        res.end('Hello..');
     } catch (error){
 
     }
