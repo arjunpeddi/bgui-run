@@ -5,6 +5,8 @@ var puppeteer = require('puppeteer');
 http.createServer(function (req, res) {
     
     res.writeHead(200, { 'Content-Type': 'text/html' });
+    run();
+    console.log('server..');
     res.end('server running!');
 
 }).listen(process.env.PORT || 8080);
@@ -17,9 +19,11 @@ async function run() {
     await page.screenshot({ path: 'github.png' });
     
     browser.close();
+
+    console.log('screenshot..');
   }
   
-run();
+// run();
 
 // var server = http.createServer(function(request, response) {
 
