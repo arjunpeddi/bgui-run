@@ -9,7 +9,7 @@ http.createServer(function (req, res) {
     (async() => { 
         
         try{
-            const browser = await puppeteer.launch();
+            const browser = await puppeteer.launch({executablePath: './node_modules/puppeteer/.local-chromium/win64-526987/chrome-win32/chrome.exe'});
             browser.close();
         }catch(error) {
             res.writeHead(201, { 'Content-Type': 'text/html' });
