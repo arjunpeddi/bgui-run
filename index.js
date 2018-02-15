@@ -1,23 +1,26 @@
 
 var http = require('http');
-var puppeteer = require('./node_modules/puppeteer/lib/Puppeteer');
+var puppeteer = require('puppeteer');
 
 // run();
 
 http.createServer(function (req, res) {
 
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end('server running! on node version: '+process.version);
+    (async() => { 
+        await 1;
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end('server running! on node version: '+process.version + 'and browser: '+process); 
+    })();
 
-    // (async() => {
-    //     const browser = await puppeteer.launch({headless: false});
+    // (async() => { 
+    //     const browser = await puppeteer.launch({ headless: false});
     //     const page = await browser.newPage();
     //     await page.goto('http://example.com');
     //     await page.screenshot({path: 'example.png'});
     //     await browser.close();
     //     res.writeHead(200, { 'Content-Type': 'text/html' });
-    //     res.end('server running!'+process.version);
-    //   })();
+    //     res.end('server running! on node version: '+process.version + 'and browser: '+process); 
+    // })();
 
 }).listen(process.env.PORT || 8080);
 
