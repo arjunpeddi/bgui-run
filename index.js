@@ -7,9 +7,16 @@ var puppeteer = require('puppeteer');
 http.createServer(function (req, res) {
 
     (async() => { 
-        await 1;
+        
+        try{
+            const browser = await puppeteer.launch();
+            browser.close();
+        }catch(error) {
+            res.writeHead(201, { 'Content-Type': 'text/html' });
+            res.end('Error launching with error: ');
+        }
         res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end('server running! on node version: '+process.version + 'and browser: '+process); 
+        res.end('server running! on node version: '+process.version); 
     })();
 
     // (async() => { 
