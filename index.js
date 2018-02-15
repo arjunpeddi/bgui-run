@@ -13,7 +13,7 @@ http.createServer(function (req, res) {
             browser.close();
         }catch(error) {
             res.writeHead(201, { 'Content-Type': 'text/html' });
-            res.end('Error launching with error: ');
+            res.end('error: '+error);
         }
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end('server running! on node version: '+process.version); 
