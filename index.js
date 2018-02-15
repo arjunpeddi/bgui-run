@@ -7,7 +7,7 @@ http.createServer(function (req, res) {
     (async() => { 
         
         try{
-            const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
+            const browser = await puppeteer.launch();
             browser.close();
         }catch(error) {
             res.writeHead(201, { 'Content-Type': 'text/html' });
@@ -19,7 +19,7 @@ http.createServer(function (req, res) {
 
     // (async() => { 
     //     try {
-    //         await 1;
+    //         await 1; {args: ['--no-sandbox', '--disable-setuid-sandbox']}
     //     // const browser = await puppeteer.launch({ headless: false});
     //     // const page = await browser.newPage();
     //     // await page.goto('http://example.com');
