@@ -7,7 +7,7 @@ http.createServer(function (req, res) {
     (async() => { 
         
         try{
-            const browser = await puppeteer.launch();
+            const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: './node_modules/puppeteer/.local-chromium/win64-526987/chrome-win32/chrome.exe'});
             browser.close();
         }catch(error) {
             res.writeHead(201, { 'Content-Type': 'text/html' });
@@ -19,7 +19,7 @@ http.createServer(function (req, res) {
 
     // (async() => { 
     //     try {
-    //         await 1; {args: ['--no-sandbox', '--disable-setuid-sandbox']}
+    //         await 1;
     //     // const browser = await puppeteer.launch({ headless: false});
     //     // const page = await browser.newPage();
     //     // await page.goto('http://example.com');
