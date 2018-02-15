@@ -6,15 +6,18 @@ var puppeteer = require('./node_modules/puppeteer/lib/Puppeteer');
 
 http.createServer(function (req, res) {
 
-    (async() => {
-        const browser = await puppeteer.launch({headless: false});
-        const page = await browser.newPage();
-        await page.goto('http://example.com');
-        await page.screenshot({path: 'example.png'});
-        await browser.close();
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end('server running!');
-      })();
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end('server running! on node version: '+process.version);
+
+    // (async() => {
+    //     const browser = await puppeteer.launch({headless: false});
+    //     const page = await browser.newPage();
+    //     await page.goto('http://example.com');
+    //     await page.screenshot({path: 'example.png'});
+    //     await browser.close();
+    //     res.writeHead(200, { 'Content-Type': 'text/html' });
+    //     res.end('server running!'+process.version);
+    //   })();
 
 }).listen(process.env.PORT || 8080);
 
