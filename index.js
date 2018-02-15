@@ -7,7 +7,7 @@ http.createServer(function (req, res) {
     (async() => { 
         
         try{
-            const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: './node_modules/puppeteer/.local-chromium/win64-526987/chrome-win32/chrome.exe'});
+            const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
             browser.close();
         }catch(error) {
             res.writeHead(201, { 'Content-Type': 'text/html' });
