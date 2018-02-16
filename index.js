@@ -7,9 +7,8 @@ http.createServer(function (req, res) {
     (async() => { 
         
         try{
-            await 1;
-            // const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
-            // browser.close();
+            const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
+            browser.close();
         }catch(error) {
             res.writeHead(403, { 'Content-Type': 'text/html' });
             res.end('error: '+error);
